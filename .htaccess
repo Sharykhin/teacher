@@ -1,0 +1,7 @@
+# включаем модуль перенаправления
+RewriteEngine On
+
+
+RewriteRule ^$ public/ [L]
+# все, запросы перенаправляются в папку public - корневая папка сайта
+RewriteRule ^(.*)$ public/$1 [L]

@@ -1,0 +1,9 @@
+body    {background-color: #E0E0E0}
+
+.loginForm  {width: 400px;
+            margin:50px auto;
+            padding: 20px;
+            background-color: #f6f6f6;
+            border: 1px solid #666;}
+
+.errorMessage   {color: #FF0000}

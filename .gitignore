@@ -1,0 +1,8 @@
+.idea
+.idea/*
+node_modules/
+node_modules/*
+./*.xml
+application/config/db.php
+public/assets/*
+resources/runtime/*
