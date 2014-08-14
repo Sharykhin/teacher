@@ -20,11 +20,15 @@ return array(
                             && is_writable(Yii::getPathOfAlias('base').'/resources/runtime')
                             && is_writable(Yii::getPathOfAlias('public.assets'))
                                 ? array('debug','log') : array(),
+
     'runtimePath' => Yii::getPathOfAlias('base').'/resources/runtime/',
+
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'application.modules.admin.components.*'
+
 	),
 	'modules'=>array(
 
