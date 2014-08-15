@@ -60,7 +60,16 @@ return array(
        'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+            'class' => 'WebUser',
+            'loginUrl'=>array('/admin'),
 		),
+
+        'authManager' => array(
+            // Будем использовать свой менеджер авторизации
+            'class' => 'PhpAuthManager',
+            // Роль по умолчанию. Все, кто не админы, модераторы и юзеры — гости.
+            'defaultRoles' => array('ROLE_GUEST'),
+        ),
 
 		'urlManager'=>file_exists(__DIR__ . '/urlManager.php') ? require_once __DIR__ . '/urlManager.php' : array(),
 

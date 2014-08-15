@@ -4,6 +4,7 @@ Yii::import('application.modules.users.models.Users');
 class UserIdentity extends CUserIdentity
 {
     private $_id;
+    public $_username;
     public function authenticate()
     {
 
@@ -16,7 +17,8 @@ class UserIdentity extends CUserIdentity
         else
         {
             $this->_id=$record->id;
-            $this->setState('attributes', $record->attributes);
+//            $this->setState('username', $record->username);
+           $this->_username=$record->username;
             $this->errorCode=self::ERROR_NONE;
         }
         return !$this->errorCode;

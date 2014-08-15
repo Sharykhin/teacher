@@ -2,10 +2,13 @@
 
 class DefaultController extends AdminController
 {
+
+
+
 	public function actionIndex()
 	{
-        if (!Yii::app()->user->isGuest) {
-            $this->redirect($this->createAbsoluteUrl('/dashboard'));
+        if (Yii::app()->user->checkAccess('ROLE_ADMIN')) {
+            $this->redirect($this->createAbsoluteUrl('/admin/dashboard'));
         }
         $model=new LoginForm;
 
@@ -27,4 +30,15 @@ class DefaultController extends AdminController
         // display the login form
         $this->render('index',array('model'=>$model));
 	}
+
+    public function actionLogout()
+    {
+        Yii::app()->user->logout();
+        $this->redirect(Yii::app()->homeUrl);
+    }
+
+    public function actionDashboard()
+    {
+       $this->render('dashboard');
+    }
 }

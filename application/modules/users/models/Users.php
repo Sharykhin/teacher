@@ -12,6 +12,7 @@
  * @property integer $age
  * @property string $sex
  * @property string $created
+ * @property string $role
  */
 class Users extends CActiveRecord
 {
@@ -112,4 +113,9 @@ class Users extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    protected function beforeSave(){
+        $this->password = crypt($this->password);
+        return parent::beforeSave();
+    }
 }

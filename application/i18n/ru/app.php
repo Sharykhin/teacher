@@ -7,5 +7,6 @@ return array(
     'Choose a category, where you need an advice'=>'Выберите категорию в которой вам нужен совет!',
     'Personal'=>'Личная жизнь',
     'Friend (+ fd activity)'=>'Друзья (+ fb активность)',
-    'Next'=>'Далее'
+    'Next'=>'Далее',
+    'Teacher' => 'Учитель'
 );

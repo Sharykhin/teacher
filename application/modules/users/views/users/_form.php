@@ -19,6 +19,9 @@
 
     <?php echo $form->dropDownListRow($model, 'sex', array('male', 'female', 'none')); ?>
 
+    <?php if(Yii::app()->user->checkAccess('ROLE_SUPERADMIN')) : ?>
+        <?php echo $form->dropDownListRow($model, 'role', array('ROLE_USER', 'ROLE_ADMIN','ROLE_SUPERADMIN')); ?>
+    <?php endif; ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
