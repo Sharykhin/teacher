@@ -6,6 +6,7 @@
     <meta http-equiv="imagetoolbar" content="no" />
     <?php echo Yii::app()->bootstrap->init(); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/web/css/admin.css" />
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/web/plugins/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <div class="container">
@@ -21,13 +22,13 @@
                 'items'=>array(
                     array('label'=>'Dashboard', 'url'=>'/admin/dashboard', 'active'=>true),
                     array('label'=>'Management', 'url'=>'#', 'items'=>array(
-                        array('label'=>'Users', 'url'=>'/admin/users/list'),
-                        array('label'=>'Another action', 'url'=>'#'),
-                        array('label'=>'Something else here', 'url'=>'#'),
+                        array('label'=>'Users', 'url'=>'/admin/users'),
+                        array('label'=>Yii::t('app','Content'), 'url'=>'/admin/content'),
                         '---',
-                        array('label'=>'NAV HEADER'),
-                        array('label'=>'Separated link', 'url'=>'#'),
-                        array('label'=>'One more separated link', 'url'=>'#'),
+                        array('label'=>Yii::t('app','Settings')),
+                        array('label'=>Yii::t('app','Site'), 'url'=>'#'),
+                        array('label'=>Yii::t('app','Modules'), 'url'=>'#'),
+                        array('label'=>Yii::t('app','Contacts'), 'url'=>'#'),
                     )),
                 ),
             ),
@@ -49,6 +50,7 @@
         ),
     )); ?>
     <?php endif; ?>
+    <div style="height: 40px;"></div>
         <?php echo $content; ?>
 
 </div>

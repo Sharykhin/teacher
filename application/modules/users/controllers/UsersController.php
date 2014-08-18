@@ -32,7 +32,7 @@ class UsersController extends AdminController
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'roles'=>array('ROLE_SUPERADMIN'),
+				'roles'=>array('ROLE_ADMIN'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

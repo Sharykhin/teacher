@@ -46,7 +46,8 @@ return array(
         ),
         'admin'=>array(
             'class'=>'application.modules.admin.AdminModule'
-        )
+        ),
+        'content'
 
 	),
    	// application components

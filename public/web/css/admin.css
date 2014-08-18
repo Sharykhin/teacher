@@ -7,3 +7,5 @@ body    {background-color: #E0E0E0}
             border: 1px solid #666;}
 
 .errorMessage   {color: #FF0000}
+
+.table {background: #F6F6F6 !important; border: 1px solid #666 !important}
