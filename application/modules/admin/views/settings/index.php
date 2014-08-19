@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Contents',
+	'Settings',
 );
 
 $this->menu=array(
-	array('label'=>'Create Content','url'=>array('create')),
-	array('label'=>'Manage Content','url'=>array('admin')),
+	array('label'=>'Create Settings','url'=>array('create')),
+	array('label'=>'Manage Settings','url'=>array('admin')),
 );
 ?>
 
-<h1>Contents</h1>
+<h1>Settings</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

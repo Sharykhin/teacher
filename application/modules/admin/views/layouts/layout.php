@@ -26,7 +26,7 @@
                         array('label'=>Yii::t('app','Content'), 'url'=>'/admin/content'),
                         '---',
                         array('label'=>Yii::t('app','Settings')),
-                        array('label'=>Yii::t('app','Site'), 'url'=>'#'),
+                        array('label'=>Yii::t('app','Site'), 'url'=>'/admin/settings/admin'),
                         array('label'=>Yii::t('app','Modules'), 'url'=>'#'),
                         array('label'=>Yii::t('app','Contacts'), 'url'=>'#'),
                     )),

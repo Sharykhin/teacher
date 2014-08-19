@@ -2,6 +2,13 @@
 
 class SiteController extends Controller
 {
+    public $title;
+
+    public $underTitle;
+
+    public $email;
+
+    public $phone;
 	/**
 	 * Declares class-based actions.
 	 */
@@ -27,8 +34,23 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+        Yii::import('application.modules.content.models.Content');
+        Yii::import('application.modules.admin.models.Settings');
+        $Content = new Content();
+        $Settings = new Settings();
+        $title = $Settings->findByAttributes(array('name'=>'title'));
+        $this->title=$title->value;
+        $underTitle =  $Settings->findByAttributes(array('name'=>'under_title'));
+        $this->underTitle = $underTitle->value;
 
-		$this->render('index');
+        $phone = $Settings->findByAttributes(array('name'=>'phone'));
+
+        $email = $Settings->findByAttributes(array('name'=>'email'));
+        $this->phone = $phone->value;
+        $this->email=$email->value;
+
+        $mainPage = $Content->findByAttributes(array('on_main_page'=>1));
+		$this->render('index',array('mainPage'=>$mainPage,'title'=>$title));
 	}
 
 

@@ -10,14 +10,14 @@
 <body id="top">
 <div class="wrapper">
     <div id="header">
-        <h1><a href="index.html">Realistic</a></h1>
-        <p>Ideas that help grow your business</p>
+        <h1><a href="index.html"><?php echo $this->title; ?></a></h1>
+        <p><?php echo $this->underTitle; ?></p>
     </div>
 </div>
 <!-- ####################################################################################################### -->
 <div class="wrapper">
     <div id="topbar">
-        <div class="fl_left">Tel: xxxxx xxxxxxxxxx | Mail: info@domain.com</div>
+        <div class="fl_left">Tel:<?php echo $this->phone; ?> | Mail: <?php echo $this->email; ?></div>
         <div class="fl_right">
             <form action="#" method="post">
                 <fieldset>
@@ -118,8 +118,8 @@
 <!-- ####################################################################################################### -->
 <div class="wrapper">
     <div id="copyright">
-        <p class="fl_left">Copyright &copy; 2011 - All Rights Reserved - <a href="#">Domain Name</a></p>
-        <p class="fl_right">Template by <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+        <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="/"><?php echo Yii::app()->request->serverName; ?></a></p>
+        <p class="fl_right">Created by chapal</p>
         <br class="clear" />
     </div>
 </div>

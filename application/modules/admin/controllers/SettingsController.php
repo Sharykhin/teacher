@@ -1,12 +1,7 @@
 <?php
 
-class ContentController extends Controller
+class SettingsController extends AdminController
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-    public $layout ='/../../admin/views/layouts/layout';
 
 	/**
 	 * @return array action filters
@@ -18,6 +13,11 @@ class ContentController extends Controller
 		);
 	}
 
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
     /**
      * Specifies the access control rules.
      * This method is used by the 'accessControl' filter.
@@ -27,7 +27,7 @@ class ContentController extends Controller
     {
         return array(
             array('allow',  // allow all users to perform 'index' and 'view' actions
-                'actions'=>array('view'),
+                'actions'=>array('index','view'),
                 'users'=>array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -43,6 +43,7 @@ class ContentController extends Controller
             ),
         );
     }
+
 
 	/**
 	 * Displays a particular model.
@@ -61,14 +62,14 @@ class ContentController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Content;
+		$model=new Settings;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Content']))
+		if(isset($_POST['Settings']))
 		{
-			$model->attributes=$_POST['Content'];
+			$model->attributes=$_POST['Settings'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -90,9 +91,9 @@ class ContentController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Content']))
+		if(isset($_POST['Settings']))
 		{
-			$model->attributes=$_POST['Content'];
+			$model->attributes=$_POST['Settings'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -122,17 +123,26 @@ class ContentController extends Controller
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
-
+	/**
+	 * Lists all models.
+	 */
+	public function actionIndex()
+	{
+		$dataProvider=new CActiveDataProvider('Settings');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
 
 	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
-		$model=new Content('search');
+		$model=new Settings('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Content']))
-			$model->attributes=$_GET['Content'];
+		if(isset($_GET['Settings']))
+			$model->attributes=$_GET['Settings'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -146,7 +156,7 @@ class ContentController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Content::model()->findByPk($id);
+		$model=Settings::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -158,7 +168,7 @@ class ContentController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='content-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='settings-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

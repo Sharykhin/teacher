@@ -1,25 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "content".
+ * This is the model class for table "settings".
  *
- * The followings are the available columns in table 'content':
+ * The followings are the available columns in table 'settings':
  * @property string $id
- * @property string $link
- * @property string $title
- * @property string $content
- * @property string $created
- * @property string $modified
- * @property integer $on_main_page
+ * @property string $name
+ * @property string $value
  */
-class Content extends CActiveRecord
+class Settings extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'content';
+		return 'settings';
 	}
 
 	/**
@@ -30,13 +26,11 @@ class Content extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title', 'required'),
-			array('on_main_page', 'numerical', 'integerOnly'=>true),
-			array('link, title', 'length', 'max'=>255),
-			array('content', 'safe'),
+			array('name, value', 'required'),
+			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, link, title, content, created, modified, on_main_page', 'safe', 'on'=>'search'),
+			array('id, name, value', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,12 +52,8 @@ class Content extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'link' => 'Link',
-			'title' => 'Title',
-			'content' => 'Content',
-			'created' => 'Created',
-			'modified' => 'Modified',
-			'on_main_page' => 'On Main Page',
+			'name' => 'Name',
+			'value' => 'Value',
 		);
 	}
 
@@ -84,18 +74,10 @@ class Content extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-        if(strtolower($this->on_main_page) === 'yes') {
-            $this->on_main_page = 1;
-        } elseif (strtolower($this->on_main_page) === 'no') {
-            $this->on_main_page = 0;
-        }
+
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('link',$this->link,true);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('content',$this->content,true);
-		$criteria->compare('created',$this->created,true);
-		$criteria->compare('modified',$this->modified,true);
-		$criteria->compare('on_main_page',$this->on_main_page);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('value',$this->value,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -106,20 +88,10 @@ class Content extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Content the static model class
+	 * @return Settings the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-
-     public function beforeSave()
-     {
-         if($this->isNewRecord)
-         {
-             $this->created=new CDbExpression('NOW()');
-         }
-         $this->modified = new CDbExpression('NOW()');
-         return parent::beforeSave();
-     }
 }

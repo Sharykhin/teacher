@@ -1,11 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Contents'=>array('index'),
+	'Settings'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'Create Content','url'=>array('create')),
+	array('label'=>'List Settings','url'=>array('index')),
+	array('label'=>'Create Settings','url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -14,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('content-grid', {
+	$.fn.yiiGridView.update('settings-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -22,12 +23,8 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Contents</h1>
+<h1>Manage Settings</h1>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
 
 <div class="btn-toolbar">
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
@@ -46,33 +43,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-
-
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
-	'id'=>'content-grid',
-    'type'=>array('striped','bordered'),
+	'id'=>'settings-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'link',
-		'title',
-        array(
-          'name'=>'content',
-           'value'=>function($item) {
-                   return $item->content;
-               },
-           'type' => 'raw',
-        ),
-		'created',
-		'modified',
-        array(
-            'name' => 'on_main_page',
-            'value' =>function($item) use ($model) {
-                    return ($item->on_main_page) ? 'YES' : 'NO';
-                },
-        ),
-
+		'name',
+		'value',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

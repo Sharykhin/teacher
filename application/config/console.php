@@ -1,13 +1,18 @@
 <?php
-
+Yii::setPathOfAlias('base', dirname(__FILE__) . '/../../');
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Console Application',
 
-	// preloading 'log' component
-	'preload'=>array('log'),
+    // preloading 'log' component
+    'preload'           => defined('YII_DEBUG')
+        && YII_DEBUG
+        && is_writable(Yii::getPathOfAlias('base').'/resources/runtime')
+        && is_writable(Yii::getPathOfAlias('public.assets'))
+            ? array('debug','log') : array(),
+    'runtimePath' => Yii::getPathOfAlias('base').'/resources/runtime/',
 
 	// application components
 	'components'=>array(
