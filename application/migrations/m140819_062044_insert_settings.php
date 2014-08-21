@@ -2,7 +2,7 @@
 
 class m140819_062044_insert_settings extends CDbMigration
 {
-	public function up()
+	public function safeUp()
 	{
         $this->insert('settings',array(
             'name'=>'title',
@@ -22,9 +22,24 @@ class m140819_062044_insert_settings extends CDbMigration
         ));
 	}
 
-	public function down()
+	public function safeDown()
 	{
-		return false;
+		$this->delete('settings',
+            "name=:name",
+            array(':name'=>'title')
+        );
+        $this->delete('settings',
+            "name=:name",
+            array(':name'=>'under_title')
+        );
+        $this->delete('settings',
+            "name=:name",
+            array(':name'=>'phone')
+        );
+        $this->delete('settings',
+            "name=:name",
+            array(':name'=>'email')
+        );
 	}
 
 	/*

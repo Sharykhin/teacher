@@ -6,7 +6,6 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Settings','url'=>array('index')),
 	array('label'=>'Create Settings','url'=>array('create')),
 	array('label'=>'View Settings','url'=>array('view','id'=>$model->id)),
 	array('label'=>'Manage Settings','url'=>array('admin')),
@@ -14,5 +13,13 @@ $this->menu=array(
 ?>
 
 <h1>Update Settings <?php echo $model->id; ?></h1>
-
+    <div class="btn-toolbar">
+        <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+            'type'=>'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+            'buttons'=>array(
+                array('label'=>'Action', 'items'=>$this->menu
+                ),
+            ),
+        )); ?>
+    </div>
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>

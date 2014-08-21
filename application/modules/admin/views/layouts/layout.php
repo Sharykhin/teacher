@@ -26,9 +26,10 @@
                         array('label'=>Yii::t('app','Content'), 'url'=>'/admin/content'),
                         '---',
                         array('label'=>Yii::t('app','Settings')),
-                        array('label'=>Yii::t('app','Site'), 'url'=>'/admin/settings/admin'),
-                        array('label'=>Yii::t('app','Modules'), 'url'=>'#'),
-                        array('label'=>Yii::t('app','Contacts'), 'url'=>'#'),
+                        array('label'=>Yii::t('app','Site'), 'url'=>'/admin/settings/admin?f=site'),
+                        array('label'=>Yii::t('app','Modules'), 'url'=>'/admin/settings/admin?f=modules')
+
+
                     )),
                 ),
             ),
@@ -37,8 +38,7 @@
                 'class'=>'bootstrap.widgets.TbMenu',
                 'htmlOptions'=>array('class'=>'pull-right'),
                 'items'=>array(
-                    array('label'=>'Link', 'url'=>'#'),
-                    array('label'=>Yii::app()->user->_username, 'url'=>'#', 'items'=>array(
+                    array('label'=>Yii::app()->user->username, 'url'=>'#', 'items'=>array(
                         array('label'=>'Action', 'url'=>'#'),
                         array('label'=>'Another action', 'url'=>'#'),
                         array('label'=>'Something else here', 'url'=>'#'),

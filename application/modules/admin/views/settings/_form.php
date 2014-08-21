@@ -7,9 +7,21 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow(
+        $model,
+        'name',
+        array(
+            'class'=>'span5',
+            'maxlength'=>255,
+            'disabled'=>(Yii::app()->controller->action->id) === 'create' ? '' : 'disabled'
+        )
+    ); ?>
 
 	<?php echo $form->textAreaRow($model,'value',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>
+
+    <?php if(Yii::app()->user->checkAccess('ROLE_SUPERADMIN')) : ?>
+        <?php echo $form->dropDownListRow($model, 'type', array('site'=>'Site', 'modules'=>'Module')); ?>
+    <?php endif; ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

@@ -3,6 +3,8 @@
 class SettingsController extends AdminController
 {
 
+
+
 	/**
 	 * @return array action filters
 	 */
@@ -10,6 +12,7 @@ class SettingsController extends AdminController
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+
 		);
 	}
 
@@ -75,7 +78,7 @@ class SettingsController extends AdminController
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model
 		));
 	}
 
@@ -99,7 +102,7 @@ class SettingsController extends AdminController
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model
 		));
 	}
 
@@ -141,6 +144,9 @@ class SettingsController extends AdminController
 	{
 		$model=new Settings('search');
 		$model->unsetAttributes();  // clear any default values
+        if(isset($_GET['f'])) {
+            $_GET['Settings']['type']=trim($_GET['f']);
+        }
 		if(isset($_GET['Settings']))
 			$model->attributes=$_GET['Settings'];
 

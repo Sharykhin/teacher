@@ -5,7 +5,6 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Settings','url'=>array('index')),
 	array('label'=>'Create Settings','url'=>array('create')),
 );
 
@@ -51,6 +50,7 @@ $('.search-form form').submit(function(){
 		'id',
 		'name',
 		'value',
+        'type',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

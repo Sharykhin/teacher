@@ -72,6 +72,17 @@ return array(
             'defaultRoles' => array('ROLE_GUEST'),
         ),
 
+
+
+        'Smtpmail'=>array(
+            'class'=>'vendor.smtpmail.PHPMailer',
+            'Host'=>null,
+            'Username'=>'sergei@antalika.com',
+            'Password'=>'antalika381713',
+            'Mailer'=>'gmail',
+            'SMTPAuth'=>true,
+        ),
+
 		'urlManager'=>file_exists(__DIR__ . '/urlManager.php') ? require_once __DIR__ . '/urlManager.php' : array(),
 
 

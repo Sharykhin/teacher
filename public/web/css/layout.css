@@ -395,3 +395,8 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	margin:0;
 	padding:0;
 	}
+
+.textarea   {min-height: 200px; max-height: 300px;min-width: 100%; max-width: 100%}
+.errorMessage   {color: #b50000;}
+
+.success_notifier   {font-size: 16px; color: #0db718;}

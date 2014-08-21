@@ -28,6 +28,36 @@ class SiteController extends Controller
 		);
 	}
 
+
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+            'SetUp',
+
+        );
+    }
+
+    public function filterSetUp($filterChain)
+    {
+
+        Yii::import('application.modules.admin.models.Settings');
+        $Settings = new Settings();
+        $title = $Settings->findByAttributes(array('name'=>'title'));
+        $this->title=$title->value;
+        $underTitle =  $Settings->findByAttributes(array('name'=>'under_title'));
+        $this->underTitle = $underTitle->value;
+        $phone = $Settings->findByAttributes(array('name'=>'phone'));
+        $email = $Settings->findByAttributes(array('name'=>'email'));
+        $this->phone = $phone->value;
+        $this->email=$email->value;
+        $filterChain->run();
+    }
+
+
+
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -35,22 +65,9 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
         Yii::import('application.modules.content.models.Content');
-        Yii::import('application.modules.admin.models.Settings');
         $Content = new Content();
-        $Settings = new Settings();
-        $title = $Settings->findByAttributes(array('name'=>'title'));
-        $this->title=$title->value;
-        $underTitle =  $Settings->findByAttributes(array('name'=>'under_title'));
-        $this->underTitle = $underTitle->value;
-
-        $phone = $Settings->findByAttributes(array('name'=>'phone'));
-
-        $email = $Settings->findByAttributes(array('name'=>'email'));
-        $this->phone = $phone->value;
-        $this->email=$email->value;
-
         $mainPage = $Content->findByAttributes(array('on_main_page'=>1));
-		$this->render('index',array('mainPage'=>$mainPage,'title'=>$title));
+		$this->render('index',array('mainPage'=>$mainPage));
 	}
 
 
@@ -71,6 +88,31 @@ class SiteController extends Controller
 	}
 
 
+    public function actionContact()
+    {
+        $model=new ContactForm();
+
+        // if it is ajax validation request
+        if(isset($_POST['ajax']) && $_POST['ajax']==='contact-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+
+        // collect user input data
+        if(isset($_POST['ContactForm']))
+        {
+            $model->attributes=$_POST['ContactForm'];
+            // validate user input and redirect to the previous page if valid
+            if($model->validate() && $model->sendMessage()) {
+                Yii::app()->user->setFlash('success', Yii::t('app','Message has been sent successfully!'));
+                $this->redirect($this->createAbsoluteUrl('/contacts'));
+            }
+        }
+
+        $this->render('contact',array('model'=>$model));
+
+    }
 
 
 	/**
@@ -80,7 +122,7 @@ class SiteController extends Controller
 	{
 
         if (!Yii::app()->user->isGuest) {
-            $this->redirect($this->createAbsoluteUrl('/dashboard'));
+            $this->redirect($this->createAbsoluteUrl('/admin/dashboard'));
         }
 		$model=new LoginForm;
 

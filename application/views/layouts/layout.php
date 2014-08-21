@@ -18,7 +18,7 @@
 <div class="wrapper">
     <div id="topbar">
         <div class="fl_left">Tel:<?php echo $this->phone; ?> | Mail: <?php echo $this->email; ?></div>
-        <div class="fl_right">
+        <div class="fl_right" style="display: none;">
             <form action="#" method="post">
                 <fieldset>
                     <legend>Site Search</legend>
@@ -34,8 +34,12 @@
 <div class="wrapper">
     <div id="topnav">
         <ul class="nav">
-            <li class="active"><a href="index.html">Homepage</a></li>
-            <li><a href="style-demo.html">Style Demo</a></li>
+            <li <?php if(Yii::app()->controller->action->id ==='index') : ?>class="active" <?php endif; ?>
+                ><a href="/"><?php echo Yii::t('app','Homepage') ?></a>
+            </li>
+            <li <?php if(Yii::app()->controller->action->id ==='contact') : ?>class="active" <?php endif; ?>>
+                <a href="/contacts"><?php echo Yii::t('app','Contacts') ?></a>
+            </li>
             <li><a href="full-width.html">Full Width</a></li>
             <li><a href="#">DropDown</a>
                 <ul>
@@ -76,7 +80,8 @@
     </div>
 </div>
 <!-- ####################################################################################################### -->
-<div class="wrapper">
+
+<div class="wrapper" style="display: none;">
     <div id="footer">        <div class="latestgallery">
             <h2>Latest Projects</h2>
             <ul>
@@ -101,6 +106,7 @@
                 <li class="last"><a href="#">Praesent et eros</a></li>
             </ul>
         </div>
+        <!-- MODULE NEWS -->
         <div class="footbox last">
             <h2>Keep In Touch</h2>
             <ul>
@@ -112,9 +118,11 @@
                 <li class="last"><a href="#">Praesent et eros</a></li>
             </ul>
         </div>
+        <!-- END MODULE NEWS -->
         <br class="clear" />
     </div>
 </div>
+
 <!-- ####################################################################################################### -->
 <div class="wrapper">
     <div id="copyright">
