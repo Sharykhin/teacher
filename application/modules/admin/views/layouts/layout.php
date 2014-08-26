@@ -20,14 +20,14 @@
             array(
                 'class'=>'bootstrap.widgets.TbMenu',
                 'items'=>array(
-                    array('label'=>'Dashboard', 'url'=>'/admin/dashboard', 'active'=>true),
-                    array('label'=>'Management', 'url'=>'#', 'items'=>array(
-                        array('label'=>'Users', 'url'=>'/admin/users'),
-                        array('label'=>Yii::t('app','Content'), 'url'=>'/admin/content'),
+                    array('label'=>Yii::t('admin','Dashboard'), 'url'=>'/admin/dashboard', 'active'=>true),
+                    array('label'=>Yii::t('admin','Management'), 'url'=>'#', 'items'=>array(
+                        array('label'=>Yii::t('admin','Users'), 'url'=>'/admin/users'),
+                        array('label'=>Yii::t('admin','Content'), 'url'=>'/admin/content'),
                         '---',
-                        array('label'=>Yii::t('app','Settings')),
-                        array('label'=>Yii::t('app','Site'), 'url'=>'/admin/settings/admin?f=site'),
-                        array('label'=>Yii::t('app','Modules'), 'url'=>'/admin/settings/admin?f=modules')
+                        array('label'=>Yii::t('admin','Settings')),
+                        array('label'=>Yii::t('admin','Site'), 'url'=>'/admin/settings/admin?f=site'),
+                        array('label'=>Yii::t('admin','Modules'), 'url'=>'/admin/settings/admin?f=modules')
 
 
                     )),
@@ -39,11 +39,7 @@
                 'htmlOptions'=>array('class'=>'pull-right'),
                 'items'=>array(
                     array('label'=>Yii::app()->user->username, 'url'=>'#', 'items'=>array(
-                        array('label'=>'Action', 'url'=>'#'),
-                        array('label'=>'Another action', 'url'=>'#'),
-                        array('label'=>'Something else here', 'url'=>'#'),
-                        '---',
-                        array('label'=>Yii::t('app','logout'), 'url'=>'/logout'),
+                        array('label'=>Yii::t('admin','Logout'), 'url'=>'/logout'),
                     )),
                 ),
             ),

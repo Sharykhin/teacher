@@ -8,5 +8,15 @@ return array(
     'Personal'=>'Личная жизнь',
     'Friend (+ fd activity)'=>'Друзья (+ fb активность)',
     'Next'=>'Далее',
-    'Teacher' => 'Учитель'
+    'Teacher' => 'Учитель',
+    'Homepage'=>'Главная',
+    'Contacts'=>'Обратная связь',
+    'All Rights Reserved'=>'Все права защищены',
+    'Message'=>'Сообщение',
+    'Name'=>'Имя',
+    'code'=>'Код проверки',
+    'Send message'=>'Отправить сообщение',
+    'Reset Form'=>'Очистить форму',
+    'Message has been sent successfully!'=>'Сообщение отправлено успешно!',
+
 );

@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * Class DefaultController
+ */
 class DefaultController extends AdminController
 {
 
-
-
-	public function actionIndex()
+    /**
+     * @method actionIndex() show login form, and make authentication
+     */
+    public function actionIndex()
 	{
         if (Yii::app()->user->checkAccess('ROLE_ADMIN')) {
             $this->redirect($this->createAbsoluteUrl('/admin/dashboard'));
@@ -25,12 +29,15 @@ class DefaultController extends AdminController
             $model->attributes=$_POST['LoginForm'];
             // validate user input and redirect to the previous page if valid
             if($model->validate() && $model->login())
-                $this->redirect($this->createAbsoluteUrl('/dashboard'));
+                $this->redirect($this->createAbsoluteUrl('/admin/dashboard'));
         }
         // display the login form
         $this->render('index',array('model'=>$model));
 	}
 
+    /**
+     * @method actionLogout() - logout user
+     */
     public function actionLogout()
     {
         Yii::app()->user->logout();

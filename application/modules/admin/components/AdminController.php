@@ -22,7 +22,7 @@ class AdminController extends CController
     public $breadcrumbs=array();
 
     public function init(){
-        Yii::app()->getMessages()->basePath=dirname(__FILE__).'/../i18n';
+        Yii::app()->getMessages()->basePath=dirname(__FILE__).'/../../../i18n';
         parent::init();
 
     }

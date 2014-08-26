@@ -10,7 +10,7 @@ Yii::setPathOfAlias('bootstrap',dirname(__FILE__).'/../../vendor/yii-bootstrap-2
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
     'charset'           => 'UTF-8',
-    'language'          => 'en',
+    'language'          => 'ru',
     'sourceLanguage'    => 'en',
 	'name'=>'My Web Application',
 
@@ -27,7 +27,8 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-        'application.modules.admin.components.*'
+        'application.modules.admin.components.*',
+        'vendor.yii-mail.YiiMailMessage',
 
 	),
 	'modules'=>array(
@@ -72,15 +73,21 @@ return array(
             'defaultRoles' => array('ROLE_GUEST'),
         ),
 
-
-
-        'Smtpmail'=>array(
+        'smtpmail'=>array(
             'class'=>'vendor.smtpmail.PHPMailer',
-            'Host'=>null,
+            'Host'=>'smtp.gmail.com',
+            'Port'=>587,
             'Username'=>'sergei@antalika.com',
             'Password'=>'antalika381713',
-            'Mailer'=>'gmail',
+            'SMTPSecure'=>'tls',
+            'CharSet'=>'utf-8',
+            //'Mailer'=>'smtp',
             'SMTPAuth'=>true,
+        ),
+
+        'mail' => array(
+            'class' => 'vendor.yii-mail.YiiMail',
+            'viewPath' => 'application.views.mail',
         ),
 
 		'urlManager'=>file_exists(__DIR__ . '/urlManager.php') ? require_once __DIR__ . '/urlManager.php' : array(),

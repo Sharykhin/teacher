@@ -1,6 +1,6 @@
 <div class="container">
     <div class="whitebox">
-        <h1><?php echo Yii::t('app','Contacts page'); ?></h1>
+        <h1><?php echo Yii::t('app','Contacts'); ?></h1>
         <?php if(Yii::app()->user->hasFlash('success')):?>
             <span class="success_notifier">
                 <?php echo Yii::app()->user->getFlash('success'); ?>
@@ -45,9 +45,9 @@
 
 
             <p>
-                <input name="submit" type="submit" id="submit" value="Submit Form" />
+                <input name="submit" type="submit" id="submit" value="<?php echo Yii::t('app','Send message') ?>" />
                 &nbsp;
-                <input name="reset" type="reset" id="reset" tabindex="5" value="Reset Form" />
+                <input name="reset" type="reset" id="reset" tabindex="5" value="<?php echo Yii::t('app','Reset Form') ?>" />
             </p>
 
             <?php $this->endWidget(); ?>

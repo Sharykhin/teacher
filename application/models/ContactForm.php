@@ -43,17 +43,19 @@ class ContactForm extends CFormModel
         );
     }
 
-    public function sendMessage()
+    public function sendMessage($data,$to)
     {
-        $mail=Yii::app()->Smtpmail;
-        $mail->SetFrom("noreply@mail.com", 'From NAme');
-        $mail->Subject    = "Feedback";
-        $mail->MsgHTML("Message");
-        $mail->AddAddress("chapal@inbox.ru", "");
-        if(!$mail->Send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
-        }else {
-            echo "Message sent!";
+        $message = new YiiMailMessage;
+        $message->view = "feedback";
+        $params              = array('data'=>$data);
+        $message->subject    = 'Teacher Feedback';
+        $message->setBody($params, 'text/html');
+        $message->addTo($to);
+        $message->from = $data['email'];
+        if(Yii::app()->mail->send($message)) {
+            return true;
+        } else {
+            return false;
         }
     }
 

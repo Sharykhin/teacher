@@ -10,7 +10,7 @@
 <body id="top">
 <div class="wrapper">
     <div id="header">
-        <h1><a href="index.html"><?php echo $this->title; ?></a></h1>
+        <h1><a href="/"><?php echo $this->title; ?></a></h1>
         <p><?php echo $this->underTitle; ?></p>
     </div>
 </div>
@@ -40,32 +40,32 @@
             <li <?php if(Yii::app()->controller->action->id ==='contact') : ?>class="active" <?php endif; ?>>
                 <a href="/contacts"><?php echo Yii::t('app','Contacts') ?></a>
             </li>
-            <li><a href="full-width.html">Full Width</a></li>
-            <li><a href="#">DropDown</a>
-                <ul>
-                    <li><a href="#">menu item</a></li>
-                    <li><a href="#">menu item</a>
-                        <ul>
-                            <li><a href="#">menu item</a></li>
-                            <li><a href="#">menu item</a>
-                                <ul>
-                                    <li><a href="#">menu item</a></li>
-                                    <li><a href="#">menu item</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">menu item</a>
-                        <ul>
-                            <li><a href="#">menu item</a></li>
-                            <li><a href="#">menu item</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">menu item</a></li>
-                </ul>
-            </li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li class="last"><a href="gallery.html">Gallery</a></li>
+<!--            <li><a href="full-width.html">Full Width</a></li>-->
+<!--            <li><a href="#">DropDown</a>-->
+<!--                <ul>-->
+<!--                    <li><a href="#">menu item</a></li>-->
+<!--                    <li><a href="#">menu item</a>-->
+<!--                        <ul>-->
+<!--                            <li><a href="#">menu item</a></li>-->
+<!--                            <li><a href="#">menu item</a>-->
+<!--                                <ul>-->
+<!--                                    <li><a href="#">menu item</a></li>-->
+<!--                                    <li><a href="#">menu item</a></li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li><a href="#">menu item</a>-->
+<!--                        <ul>-->
+<!--                            <li><a href="#">menu item</a></li>-->
+<!--                            <li><a href="#">menu item</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li><a href="#">menu item</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--            <li><a href="portfolio.html">Portfolio</a></li>-->
+<!--            <li class="last"><a href="gallery.html">Gallery</a></li>-->
         </ul>
         <div class="clear"></div>
     </div>
@@ -126,7 +126,7 @@
 <!-- ####################################################################################################### -->
 <div class="wrapper">
     <div id="copyright">
-        <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="/"><?php echo Yii::app()->request->serverName; ?></a></p>
+        <p class="fl_left">Copyright &copy; 2014 - <?php echo Yii::t('app','All Rights Reserved') ?> - <a href="/"><?php echo Yii::app()->request->serverName; ?></a></p>
         <p class="fl_right">Created by chapal</p>
         <br class="clear" />
     </div>

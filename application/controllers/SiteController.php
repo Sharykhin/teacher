@@ -104,9 +104,11 @@ class SiteController extends Controller
         {
             $model->attributes=$_POST['ContactForm'];
             // validate user input and redirect to the previous page if valid
-            if($model->validate() && $model->sendMessage()) {
-                Yii::app()->user->setFlash('success', Yii::t('app','Message has been sent successfully!'));
-                $this->redirect($this->createAbsoluteUrl('/contacts'));
+            if($model->validate() && $model->sendMessage($_POST['ContactForm'],$this->email)) {
+
+                    Yii::app()->user->setFlash('success', Yii::t('app','Message has been sent successfully!'));
+                    $this->redirect($this->createAbsoluteUrl('/contacts'));
+
             }
         }
 
