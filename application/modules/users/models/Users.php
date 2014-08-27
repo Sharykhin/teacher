@@ -61,13 +61,13 @@ class Users extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'Username',
-			'password' => 'Password',
-			'first_name' => 'First Name',
-			'last_name' => 'Last Name',
-			'age' => 'Age',
-			'sex' => 'Sex',
-			'created' => 'Created',
+			'username' => Yii::t('admin','Username'),
+			'password' => Yii::t('admin','Password'),
+			'first_name' => Yii::t('admin','First Name'),
+			'last_name' => Yii::t('admin','Last Name'),
+			'age' => Yii::t('admin','Age'),
+			'sex' => Yii::t('admin','Sex'),
+			'created' => Yii::t('admin','Created'),
 		);
 	}
 

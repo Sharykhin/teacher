@@ -5,16 +5,24 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Users','url'=>array('index')),
-	array('label'=>'Create Users','url'=>array('create')),
-	array('label'=>'Update Users','url'=>array('update','id'=>$model->id)),
-	array('label'=>'Delete Users','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Users','url'=>array('admin')),
+
+	array('label'=>Yii::t('admin','Create User'),'url'=>array('create')),
+	array('label'=>Yii::t('admin','Update User'),'url'=>array('update','id'=>$model->id)),
+	array('label'=>Yii::t('admin','Delete User'),'url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>Yii::t('admin','Are you sure you want to delete this item?'))),
+	array('label'=>Yii::t('admin','Manage Users'),'url'=>array('admin')),
 );
 ?>
 
-<h1>View Users #<?php echo $model->id; ?></h1>
-
+<h1><?php echo Yii::t('admin','View User') ?>  <?php echo $model->username; ?></h1>
+<div class="btn-toolbar">
+    <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+        'type'=>'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'buttons'=>array(
+            array('label'=>Yii::t('admin','Action'), 'items'=>$this->menu
+            ),
+        ),
+    )); ?>
+</div>
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
 	'attributes'=>array(

@@ -33,7 +33,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
     <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
         'type'=>'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
         'buttons'=>array(
-            array('label'=>'Action', 'items'=>$this->menu
+            array('label'=>Yii::t('admin','Action'), 'items'=>$this->menu
             ),
         ),
     )); ?>
