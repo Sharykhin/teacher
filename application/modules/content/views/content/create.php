@@ -5,11 +5,18 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Content','url'=>array('index')),
-	array('label'=>'Manage Content','url'=>array('admin')),
+	array('label'=>Yii::t('admin','Manage Contents'),'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Content</h1>
-
+<h1><?php echo Yii::t('admin','Create Content') ?></h1>
+    <div class="btn-toolbar">
+        <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+            'type'=>'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+            'buttons'=>array(
+                array('label'=>Yii::t('admin','Action'), 'items'=>$this->menu
+                ),
+            ),
+        )); ?>
+    </div>
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

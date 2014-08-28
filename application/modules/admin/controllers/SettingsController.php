@@ -110,8 +110,9 @@ class SettingsController extends AdminController
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
+     * @throws CHttpException
 	 */
-	public function actionDelete($id)
+    public function actionDelete($id)
 	{
 		if(Yii::app()->request->isPostRequest)
 		{

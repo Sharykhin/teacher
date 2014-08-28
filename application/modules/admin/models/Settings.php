@@ -54,9 +54,9 @@ class Settings extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'value' => 'Value',
-            'type' => 'Type'
+			'name' => Yii::t('admin','Name'),
+			'value' => Yii::t('admin','Value'),
+            'type' => Yii::t('admin','Type')
 		);
 	}
 

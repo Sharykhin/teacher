@@ -58,12 +58,12 @@ class Content extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'link' => 'Link',
-			'title' => 'Title',
-			'content' => 'Content',
-			'created' => 'Created',
-			'modified' => 'Modified',
-			'on_main_page' => 'On Main Page',
+			'link' => Yii::t('admin','Link'),
+			'title' => Yii::t('admin','Title'),
+			'content' => Yii::t('admin','Content'),
+			'created' => Yii::t('admin','Created'),
+			'modified' => Yii::t('admin','Modified'),
+			'on_main_page' => Yii::t('admin','On Main Page'),
 		);
 	}
 
