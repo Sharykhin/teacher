@@ -1,6 +1,6 @@
 <?php
 // change the following paths if necessary
-
+$a=5;
 $development = isset($_SERVER['SERVER_ADDR'])
     ? strpos($_SERVER['SERVER_ADDR'], '127') === 0
     : $_SERVER['SERVER_NAME'] == 'localhost';
